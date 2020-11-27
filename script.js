@@ -1,19 +1,19 @@
 // ==UserScript==
 // @name     Prevent Youtube Sign-in Prompt
-// @version  1
+// @version  1.1
 // @author   Kuregon
 // @match    *://www.youtube.com/*
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js 
 // ==/UserScript==
 
 function check() {
-  console.log("running script");
-  // a video without popup will have a hidden error-screen div with no childs.
-  var hasChild = $('#error-screen').last().children().length;
+  const button_wrapper = document.querySelector("#dismiss-button");
   
-  if (hasChild) {
-    // reloading will get you to the video
-    location.reload();
+  if(button_wrapper !== null){ 
+    const button = button_wrapper.querySelector("#button")
+  	button.click()
+    
+    console.log("closed annoying prompt")
   }
 };
 
